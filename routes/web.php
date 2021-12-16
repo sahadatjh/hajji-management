@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PackageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::middleware(['web'])->group(function () {
+    Route::prefix('masterdata')->group(function () {
+        Route::group(['prefix' => 'packages', 'as' => 'packages.'], function () {
+            Route::get('/', [PackageController::class, 'index'])->name('index');
+            Route::post('/store', [PackageController::class, 'store'])->name('store');
+        });
+    });
 });
