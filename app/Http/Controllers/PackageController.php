@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Package;
+use Exception;
 use Illuminate\Http\Request;
 
 class PackageController extends Controller
@@ -25,7 +26,7 @@ class PackageController extends Controller
      */
     public function create()
     {
-        //
+        return view('masterdata.packages.create');
     }
 
     /**
@@ -36,7 +37,23 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            // $data = [
+            //     "package_title" => $request->package_title,
+            //     "price"         => $request->price
+            // ];
+            // $package = new Package();
+            // $package->save($data);
+            $package = Package::create([
+                "package_title" => $request->package_title,
+                "price"         => $request->price
+            ]);
+            if ($package) {
+                return redirect()->route('packages.index');
+            }
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
     }
 
     /**

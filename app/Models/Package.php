@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Package extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'package_title',
+        'price',
+        'created_by'
+    ];
 }

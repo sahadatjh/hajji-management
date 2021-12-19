@@ -36,11 +36,10 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{route('packages.index')}}" class="nav-link">
-                  <i class="fa fa-star nav-icon"></i>
+                  <i class="fas fa-arrows-alt nav-icon"></i>
                   <p>Packages</p>
                 </a>
               </li>
-             
             </ul>
           </li>
         </ul>

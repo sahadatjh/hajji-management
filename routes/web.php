@@ -22,6 +22,7 @@ Route::middleware(['web'])->group(function () {
     Route::prefix('masterdata')->group(function () {
         Route::group(['prefix' => 'packages', 'as' => 'packages.'], function () {
             Route::get('/', [PackageController::class, 'index'])->name('index');
+            Route::get('/create', [PackageController::class, 'create'])->name('create');
             Route::post('/store', [PackageController::class, 'store'])->name('store');
         });
     });
