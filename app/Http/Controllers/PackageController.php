@@ -38,12 +38,6 @@ class PackageController extends Controller
     public function store(Request $request)
     {
         try {
-            // $data = [
-            //     "package_title" => $request->package_title,
-            //     "price"         => $request->price
-            // ];
-            // $package = new Package();
-            // $package->save($data);
             $package = Package::create([
                 "package_title" => $request->package_title,
                 "price"         => $request->price
@@ -75,7 +69,9 @@ class PackageController extends Controller
      */
     public function edit(Package $package)
     {
-        //
+        return view('masterdata.packages.edit', ['package'=>$package]);
+
+        // return response()->json($package);
     }
 
     /**
@@ -87,7 +83,10 @@ class PackageController extends Controller
      */
     public function update(Request $request, Package $package)
     {
-        //
+        $package->package_title = $request->package_title;
+        $package->price = $request->price;
+        $package->save();
+        return redirect()->route('packages.index');
     }
 
     /**
@@ -98,6 +97,7 @@ class PackageController extends Controller
      */
     public function destroy(Package $package)
     {
-        //
+        $package->delete();
+        return back();
     }
 }

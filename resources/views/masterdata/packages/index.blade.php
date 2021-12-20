@@ -37,7 +37,16 @@
                                     <td>{{$key+1}}</td>
                                     <td>{{$item->package_title}}</td>
                                     <td>{{$item->price}}</td>
-                                    <td></td>
+                                    <td class="text-center">
+                                        {{-- @can('update', $item) --}}
+                                            <a href="{{route('packages.edit',$item->id)}}" class="btn btn-info btn-sm float-left" title="Edit"><i class="fa fa-pen"></i></a>
+                                        {{-- @endcan --}}
+                                        <form action="{{route('packages.destroy',$item->id)}}" method="post" class="w-25 float-left">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn btn-sm btn-danger btnDelete" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                       </tbody>
@@ -70,7 +79,17 @@
     </div> 
     </div>
 </div>
-
-    
  
 @endsection
+
+@push('scripts')
+    <script>
+        (function($) {
+            $(document).ready(function () {
+                $('.btnDelete').on('click', function () {
+                    return confirm('Are you sure DELETE this!!!')
+                });
+            });
+        })(jQuery)
+    </script>
+@endpush
