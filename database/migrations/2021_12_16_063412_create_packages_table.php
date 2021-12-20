@@ -19,6 +19,7 @@ class CreatePackagesTable extends Migration
             $table->double('price');
             $table->bigInteger('created_by')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
