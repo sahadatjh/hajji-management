@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tamanna Hajj Group</title>
+  <title>@yield('title')</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -27,8 +27,9 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
 
-    @include('partials.page-header')
-
+    {{-- @include('partials.page-header') --}}
+    <div class="p-1"></div>
+    
     <!-- Main content -->
     <section class="content">
 

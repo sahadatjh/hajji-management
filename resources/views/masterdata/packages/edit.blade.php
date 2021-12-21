@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('title','THG | Package Edit')
 @section('content')
 <div class="card">
     <div class="card-header bg-dark text-uppercase">

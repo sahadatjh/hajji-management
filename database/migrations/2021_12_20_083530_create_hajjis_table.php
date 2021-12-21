@@ -32,7 +32,7 @@ class CreateHajjisTable extends Migration
             $table->date('flyte_date')->nullable();
             $table->string('mobile_number', 11);
             $table->string('nid_number', 32);
-            $table->date('date_of_barth');
+            $table->date('date_of_birth');
             $table->integer('district_id')->nullable();
             $table->string('district',64)->nullable();
             $table->string('gender',16);
@@ -45,6 +45,7 @@ class CreateHajjisTable extends Migration
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

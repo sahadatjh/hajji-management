@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@section('title','THG | Packages')
 @section('content')
     <!-- Default box -->
 <div class="row">
@@ -9,7 +9,7 @@
               <h3 class="card-title text-uppercase">Packages List</h3>
     
               <div class="card-tools">
-                {{-- <a href="{{route('packages.create')}}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Add New</a href="{{route('packages.create')}}"> --}}
+                {{-- <a href="{{route('packages.create')}}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Add New</a> --}}
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
                     </button>
@@ -32,9 +32,9 @@
                             <td colspan="4" class="text-center"><h3>No Data Found</h3></td>
                         </tr> 
                           @endif
-                            @foreach ($packages as $key => $item)
+                            @foreach ($packages as $item)
                                 <tr>
-                                    <td>{{$key+1}}</td>
+                                    <td>{{$loop->iteration}}</td>
                                     <td>{{$item->package_title}}</td>
                                     <td>{{$item->price}}</td>
                                     <td class="text-center">

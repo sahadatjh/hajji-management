@@ -42,6 +42,24 @@
               </li>
             </ul>
           </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-star"></i>
+              <p>
+                Manage Hajji
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('pre-register-hajjis.index')}}" class="nav-link">
+                  <i class="fas fa-arrows-alt nav-icon"></i>
+                  <p>Pre Register Hajjis</p>
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

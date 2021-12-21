@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmailVerificationController;
+use App\Http\Controllers\HajjiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PackageController;
@@ -25,9 +26,15 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::view('/dashboard','dashboard')->name('dashboard');
 
-    // Route::resource('task',TaskController::class);
+    Route::resource('task',TaskController::class);
     
     Route::prefix('masterdata')->group(function () {
         Route::resource('packages', PackageController::class);
     });
+
+    Route::prefix('hajji')->group(function () {
+        Route::resource('pre-register-hajjis', HajjiController::class);
+    });
+
+
 });
