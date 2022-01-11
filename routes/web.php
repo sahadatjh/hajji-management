@@ -34,6 +34,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::prefix('hajji')->group(function () {
         Route::resource('pre-register-hajjis', HajjiController::class);
+
+        Route::get('/pre-register-hajji/{id}',[HajjiController::class,'change_status'])->name('change.status');
+        Route::get('/hajjis',[HajjiController::class,'hajji_idex'])->name('hajjis.index');
     });
 
 

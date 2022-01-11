@@ -58,6 +58,12 @@
                   <p>Pre Register Hajjis</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('hajjis.index')}}" class="nav-link">
+                  <i class="fas fa-arrows-alt nav-icon"></i>
+                  <p>On Goring Hajjis</p>
+                </a>
+              </li>
             </ul>
           </li>
         </ul>

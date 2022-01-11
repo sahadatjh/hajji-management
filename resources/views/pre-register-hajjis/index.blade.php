@@ -14,7 +14,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                  <table class="table table-bordered">
+                  <table class="table table-bordered" id="hajji-listing-table">
                       <thead>
                           <tr class="bg-dark text-center">
                             <th>Sl No</th>
@@ -41,8 +41,9 @@
                               <td>{{$hajji->nid_number}}</td>
                               <td>{{date('d-m-Y', strtotime($hajji->date_of_birth))}}</td>
                               <td>{{$hajji->district}}</td>
-                              <td>
-                                <a href="{{route('pre-register-hajjis.show',$hajji->id)}}" class="btn btn-sm btn-primary float-left" title="View Details"><i class="fa fa-eye"></i></a>
+                              <td class="d-flex">
+                                <a href="{{route('change.status',$hajji->id)}}" class="btn btn-sm btn-success float-left" title="Change Status"><i class="fa fa-check"></i></a>
+                                <a href="{{route('pre-register-hajjis.show',$hajji->id)}}" class="btn btn-sm btn-primary float-left ml-1" title="View Details"><i class="fa fa-eye"></i></a>
                                 <a href="{{route('pre-register-hajjis.edit',$hajji->id)}}" class="btn btn-sm btn-info float-left ml-1" title="Edit"><i class="fa fa-pen"></i></a>
                                 <form action="{{route('pre-register-hajjis.destroy',$hajji->id)}}" method="post" class="float-left ml-1">
                                   @method('DELETE')
@@ -62,3 +63,45 @@
 
 </div>
 @endsection
+
+@push('css')
+      <link rel="stylesheet" href="{{asset('assets')}}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+      <link rel="stylesheet" href="{{asset('assets')}}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+      <link rel="stylesheet" href="{{asset('assets')}}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+@endpush
+
+@push('scripts')
+    <!-- DataTables  & Plugins -->
+    <script src="{{asset('assets')}}/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{asset('assets')}}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{asset('assets')}}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="{{asset('assets')}}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="{{asset('assets')}}/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="{{asset('assets')}}/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="{{asset('assets')}}/plugins/jszip/jszip.min.js"></script>
+    <script src="{{asset('assets')}}/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="{{asset('assets')}}/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="{{asset('assets')}}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="{{asset('assets')}}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="{{asset('assets')}}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+
+    <Script>
+      (function ($) {
+        $(document).ready(function () {
+          $(function () {
+            
+            $('#hajji-listing-table').DataTable({
+              "paging": true,
+              "lengthChange": false,
+              "searching": true,
+              "ordering": true,
+              "info": true,
+              "autoWidth": false,
+              "responsive": true,
+            });
+          }); 
+        });
+      })(jQuery)
+    </Script>
+@endpush

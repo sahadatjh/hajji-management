@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hajji;
 use App\Models\Package;
+use Exception;
 use Illuminate\Http\Request;
 
 class HajjiController extends Controller
@@ -130,5 +131,25 @@ class HajjiController extends Controller
     {
         $pre_register_hajji->delete();
         return redirect()->route('pre-register-hajjis.index');
+    }
+
+public function change_status($id)
+{
+    try {
+        $hajji = Hajji::find($id);
+        $hajji->update(['hajji_status'=>1]);
+        return redirect()->route('pre-register-hajjis.index');
+    } catch (Exception $e) {
+        return $e->getMessage();
+    }
+    
+}
+
+
+//On going Hajjis
+    public function hajji_idex()
+    {
+        $hajjis = Hajji::Where('hajji_status',1)->get();
+        return view('hajjis.index',compact('hajjis'));
     }
 }
